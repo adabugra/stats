@@ -1,0 +1,1 @@
+findstr /c:"user" ".\temp\*.log" | Out-GridView
