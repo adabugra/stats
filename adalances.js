@@ -23,7 +23,12 @@ bot.on('serverAuth', function() {
   bot.chat('/accept Shopier')
   bot.afk.setOptions({ fishing: false, chatting: false, killauraEnable: false, breaking: false }); //disables fishing
   bot.afk.start();
-
-// Log errors and kick reasons:
+  if (config.utils['auto-reconnect']) {
+    bot.on('end', () => {
+       setTimeout(() => {
+          createBot();
+       },);
+    });
+ }
 bot.on('kicked', console.log)
 bot.on('error', console.log)
